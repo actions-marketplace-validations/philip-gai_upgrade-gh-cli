@@ -1,0 +1,47 @@
+name: upgrade-gh-cli tests
+
+on:
+  workflow_dispatch: {}
+  pull_request: {}
+  push:
+    branches: ["main"]
+    paths: ["action.yml", ".github/workflows/upgrade-gh-cli-tests.yml"]
+
+jobs:
+  upgrade-gh-cli-and-assert:
+    name: Upgrade gh cli and assert-upgraded
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04, ubuntu-18.04]
+    steps:
+      - name: Checkout composite actions repository
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.repository }}
+          path: ${{ github.repository }}
+          ref: ${{ github.ref }}
+      - name: Upgrade gh cli and assert-upgraded
+        uses: ./${{ github.repository }}
+        with:
+          assert-upgraded: true
+
+  upgrade-gh-cli-and-skip-assert:
+    name: Upgrade gh cli and skip assertion
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04, ubuntu-18.04]
+    steps:
+      - name: Checkout composite actions repository
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.repository }}
+          path: ${{ github.repository }}
+          ref: ${{ github.ref }}
+      - name: Upgrade gh cli skip assert-upgraded
+        uses: ./${{ github.repository }}
+        with:
+          assert-upgraded: false
