@@ -5,10 +5,10 @@ on:
   pull_request: {}
   push:
     branches: ["main"]
-    paths: ["action.yml", ".github/workflows/upgrade-gh-cli-tests.yml"]
+    paths: ["action.yml", ".github/workflows/tests.yml"]
 
 jobs:
-  upgrade-gh-cli-and-assert:
+  upgrade-assert:
     name: Upgrade gh cli and assert-upgraded
     runs-on: ${{ matrix.os }}
     strategy:
@@ -27,7 +27,7 @@ jobs:
         with:
           assert-upgraded: true
 
-  upgrade-gh-cli-and-skip-assert:
+  upgrade-no-assert:
     name: Upgrade gh cli and skip assertion
     runs-on: ${{ matrix.os }}
     strategy:
