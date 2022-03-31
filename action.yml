@@ -1,6 +1,11 @@
 name: "Upgrade gh cli to latest"
 description: "Upgrades the gh cli to the latest version"
 
+author: "philip-gai"
+branding:
+  icon: "code"
+  color: "purple"
+
 inputs:
   assert-upgraded:
     description: "Assert that the version was updated"
