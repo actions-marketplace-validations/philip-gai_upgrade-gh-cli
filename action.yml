@@ -1,5 +1,5 @@
-name: "Upgrade gh cli to latest"
-description: "Upgrades the gh cli to the latest version"
+name: "Upgrade gh cli to the latest version"
+description: "Upgrade the gh cli on your ubuntu runner to the latest version"
 
 author: "philip-gai"
 branding:
